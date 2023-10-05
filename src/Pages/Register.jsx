@@ -1,8 +1,36 @@
-import { Link } from "react-router-dom";
+
 import Navbar from "../components/sharedComponents/Navbar";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
+
+
 
 
 const Register = () => {
+  
+  const {creteUser}  = useContext(AuthContext)
+ 
+    // hadel form
+  const handelform  = (e) =>{
+    e.preventDefault();
+    // get user info
+    const userName = e.target.name.value;
+    const userImg = e.target.photo.value;
+    const userEmail = e.target.email.value;
+    const userPassword = e.target.password.value;
+    console.log(userName,userImg,userEmail,userPassword);
+    // crete user via name and email
+
+    creteUser(userEmail,userPassword)
+    .then(result => console.log(result.user))
+    .catch(err => console.error(err))
+  }
+
+
+
+
+
+
     return (
         <div className="mt-10 mb-10">
         <Navbar></Navbar>
@@ -13,7 +41,7 @@ const Register = () => {
   
 </div>
 <div className="card  flex-shrink-0 md:w-full  max-w-sm">
-  <form className="card-body">
+  <form onSubmit={handelform} className="card-body">
     <div className="form-control">
       <label className="label">
         <span className="label-text text-xl text-[#403F3F] font-semibold">Name</span>
@@ -24,7 +52,7 @@ const Register = () => {
       <label className="label">
         <span className="label-text text-xl text-[#403F3F] font-semibold">Photo Url</span>
       </label>
-      <input  name="photo" type="email" placeholder="Photo Url" className="input input-bordered px-8 py-4 bg-[#F3F3F3] rounded-md border-0" required />
+      <input  name="photo" type="text" placeholder="Photo Url" className="input input-bordered px-8 py-4 bg-[#F3F3F3] rounded-md border-0" required />
     </div>
     <div className="form-control">
       <label className="label">

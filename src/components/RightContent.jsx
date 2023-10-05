@@ -4,17 +4,46 @@ import qz1 from '../assets/qZone1.png'
 import qz2 from '../assets/qZone2.png'
 import qz3 from '../assets/qZone3.png'
 import bg1 from '../assets/bg1.png'
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+
 const RightContent = () => {
+    const {googleLogin, githubLogin} = useContext(AuthContext);
+    console.log(googleLogin)
+   // google login
+    const handelGoogleLogin = () =>{
+    
+        googleLogin()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(err =>{
+            console.error(err)
+        })
+    }
+   // github login
+    const handelGithubLogin = () =>{
+    
+        githubLogin()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(err =>{
+            console.error(err)
+        })
+    }
+
+
     return (
         <div className=" md:grid md:col-span-1 ">
            <div className="right-heading ">
            <h1 className="text-xl font-semibold text-[#403F3F]">Login With</h1>
            </div>
            <div className="mt-2 mb-2">
-                <button className="btn md:w-full btn-outline text-[#3666cc]"> <FaGoogle></FaGoogle>Login with Google</button>
+                <button onClick={handelGoogleLogin} className="btn md:w-full btn-outline text-[#3666cc]"> <FaGoogle></FaGoogle>Login with Google</button>
            </div>
            <div>
-                <button className="btn md:w-full btn-outline"> <FaGithub></FaGithub>Login with Github</button>
+                <button onClick={handelGithubLogin} className="btn md:w-full btn-outline"> <FaGithub></FaGithub>Login with Github</button>
            </div>
            <div className="right-heading mt-4 mb-4">
            <h1 className="text-xl font-bold ">Find Us On</h1>
