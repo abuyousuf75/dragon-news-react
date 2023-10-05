@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import deemyAvatar from '../../assets/user.png'
 
 const Navbar = () => {
@@ -31,7 +31,8 @@ const Navbar = () => {
           <img src={deemyAvatar} />
         </div>
       </label>
-         <button className="bg-[#403F3F] px-8 py-3 ml-4 text-white text-xl"> Login</button>
+        <Link to='/login'>
+        <button className="bg-[#403F3F] px-8 py-3 ml-4 text-white text-xl"> Login</button></Link>
         </div>
       </div>
     );

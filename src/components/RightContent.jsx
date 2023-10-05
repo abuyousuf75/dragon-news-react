@@ -1,5 +1,9 @@
 import { FaGoogle,FaGithub, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
-
+import './right.css'
+import qz1 from '../assets/qZone1.png'
+import qz2 from '../assets/qZone2.png'
+import qz3 from '../assets/qZone3.png'
+import bg1 from '../assets/bg1.png'
 const RightContent = () => {
     return (
         <div className=" md:grid md:col-span-1 ">
@@ -51,8 +55,24 @@ const RightContent = () => {
                </div>
             </div>
           {/* q zone start here */}
-        <div className="mt-2 mb-4 bg-[#F3F3F3]">
-            <h2 className="text-xl ">Q zone</h2>
+        <div className="mt-2 mb-4 bg-[#F3F3F3] p-6">
+            <h2 className="text-xl text-[#403F3F] font-semibold mb-6">Q Zone</h2>
+           <div>
+           <img src={qz1} alt="qz1" />
+            <img src={qz2} alt="qz2" />
+            <img src={qz3} alt="qz3" />
+           </div>
+           <div className="mt-10">
+                <div className="bg-img relative" style={{backgroundImage: `url(${bg1})`}}>
+                    <div className="bg-overlay absolute">
+                        <h2 className="text-3xl text-white font-bold text-center mt-16 mb-5">Create an Amazing Newspaper</h2>
+                        <p className=" text-white font-medium pr-4 pl-4 text-center mb-12">Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
+                       <div className="flex justify-center items-center">
+                       <button className="bg-[#D72050] text-white font-bold px-6 py-3 text-center">Learn More</button>
+                       </div>
+                    </div>
+                </div>
+           </div>
         </div>
 
         </div>
