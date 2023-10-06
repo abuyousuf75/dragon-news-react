@@ -6,11 +6,13 @@ import { useEffect } from "react";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
+    const [loadding, setLoadding] = useState(true)
 const [user, setUser] = useState(null);
 
 
 // register user 
  const creteUser = (email,password) =>{
+    setLoadding(true)
     return createUserWithEmailAndPassword(auth, email, password);
 
  }
@@ -18,18 +20,21 @@ const [user, setUser] = useState(null);
  // login user 
 
  const userLogin = (email,password) =>{
+    setLoadding(true)
     return signInWithEmailAndPassword(auth,email,password)
  }
  
 /// login via google
 const gogoleProvider = new GoogleAuthProvider();
 const googleLogin = () =>{
+    setLoadding(true)
     return signInWithPopup(auth,gogoleProvider);
 }
  
 // login via github
 const githubProvider = new GithubAuthProvider();
 const githubLogin = () =>{
+    setLoadding(true)
     return signInWithPopup(auth,githubProvider)
 }
 
@@ -37,8 +42,8 @@ const githubLogin = () =>{
 
     useEffect(()=>{
        const unSubscribe =  onAuthStateChanged(auth,currentUser=>{
-            console.log(user)
             setUser(currentUser);
+            setLoadding(false)
        });
 
        return () => {
@@ -49,11 +54,19 @@ const githubLogin = () =>{
 
     // logOut
     const logOut = () =>{
+        setLoadding(true)
         return signOut(auth)
     }
-
+// load news via effect 
+const [homeNews, setHomeNews] = useState([]);
+    
+useEffect(()=>{
+    fetch('/public/news.json')
+    .then(res => res.json())
+    .then(data => setHomeNews(data))
+},[])
    
-    const authInfo = {user,creteUser,userLogin,logOut, googleLogin, githubLogin}
+    const authInfo = {user,creteUser,userLogin,logOut, googleLogin, githubLogin,homeNews,loadding}
 
 
     return (

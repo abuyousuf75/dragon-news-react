@@ -6,6 +6,8 @@ import HomeNews from "../components/HomeNews";
 import RightContent from "../components/RightContent";
 
 const Home = () => {
+  
+  
     return (
       <div>
          <Header></Header>
@@ -20,7 +22,7 @@ const Home = () => {
        <div className="mt-6">
        <Navbar></Navbar>
        </div>
-       <div className="grid gap-6 md:grid-cols-4 mt-10">
+       <div className="grid gap-6 md:grid-cols-4 mt-10 relative">
             <LeftContetnt></LeftContetnt>
             <HomeNews></HomeNews>
             <RightContent></RightContent>

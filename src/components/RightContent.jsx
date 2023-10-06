@@ -35,7 +35,7 @@ const RightContent = () => {
 
 
     return (
-        <div className=" md:grid md:col-span-1 ">
+        <div className=" md:grid md:col-span-1 absolute right-0 ">
            <div className="right-heading ">
            <h1 className="text-xl font-semibold text-[#403F3F]">Login With</h1>
            </div>
